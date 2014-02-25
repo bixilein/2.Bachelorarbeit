@@ -1,0 +1,225 @@
+% !TEX encoding = IsoLatin2  % notwendige Zeile f"ur Mac-Benutzer (muss als Kommentar stehen); Windows-Benutzer k"onnen die Zeile l"oschen.
+
+% LaTeX-Vorlage Version 3.1,  Juli 2011
+% erstellt von Dr. Andreas Drauschke (andreas.drauschke@technikum-wien.at) und Dr. Susanne Teschl (susanne.teschl@technikum-wien.at)
+% geringf"ugig adaptiert von Harald Stockinger (harald.stockinger@technikum-wien.at)
+%
+% Anpassungen an BMR/MMR durch M. Widrich (BMR6) im Jänner 2012 und getestet durch W. Kubinger im März und September 2012
+%   Fragen zu den BMR- und MMR-Vorlagen bitte an Wilfried Kubinger (kubinger@technikum-wien.at) richten.
+%
+% Angepasst an BMR6, SS2013: 22.2.2013, WK
+% Angepasst an BMR5, WS2013: 2.9.2013, WK
+%
+
+\documentclass[a4paper,bibtotoc,oneside,numbers=noenddot]{scrbook}
+% F"ur kurze Arbeiten w"are auch die Dokumentklasse "scrartcl" ausreichend. In diesem Fall ist "section" die h"ochste Ebene ("chapter" gibt es dann nicht).
+% \documentclass[a4paper,bibtotoc,oneside]{scrartcl}
+
+
+% verlinkte Querverweise im pdf
+% Optional, falls man dies im Dokument wünscht
+\usepackage{hyperref}
+\urlstyle{same} % URLs werden mit normalem Font angezeigt
+
+% deutsche Anpassungen
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+% mathematische Symbole
+\usepackage{amsmath,amssymb,amsfonts,amstext}
+
+% Kopfzeilen frei gestaltbar
+\usepackage{fancyhdr}
+\lfoot[\fancyplain{}{}]{\fancyplain{}{}}
+\rfoot[\fancyplain{}{}]{\fancyplain{}{}}
+\cfoot[\fancyplain{}{\footnotesize\thepage}]{\fancyplain{}{\footnotesize\thepage}}
+\lhead[\fancyplain{}{\footnotesize\nouppercase\leftmark}]{\fancyplain{}{}}
+\chead{}
+\rhead[\fancyplain{}{\footnotesize\nouppercase\leftmark}]{\fancyplain{}{}}
+\renewcommand{\headrulewidth}{0pt}
+
+% Farben im Dokument m"oglich
+\usepackage{color}
+
+% Schriftart Helvetica
+\usepackage{helvet}
+\renewcommand{\familydefault}{cmss}
+
+% Graphiken einbinden: hier f"ur pdflatex
+\usepackage[pdftex]{graphicx}
+
+% Zitate im Harvard-Style
+\usepackage{harvard}
+
+% Source-Code einbinden
+\usepackage{listings}
+\lstset{language=C}
+
+\usepackage{array}
+
+% H"ohe und Breite des Textk"orpers etwas gr"osser definieren
+\setlength{\textheight}{225mm}
+\setlength{\textwidth}{1.05\textwidth}
+
+% weniger Warnungen wegen "uberf"ullter Boxen
+\tolerance = 9999
+\sloppy
+
+% Anpassung einiger "Uberschriften
+\renewcommand\figurename{Abbildung}
+\renewcommand\tablename{Tabelle}
+
+% Abbildungen, Gleichungen und Tabellen werden fortlaufend nummeriert
+\renewcommand\thefigure{\arabic{figure}}
+\renewcommand\thetable{\arabic{table}}
+\renewcommand\theequation{\arabic{equation}}
+\usepackage{remreset}
+\makeatletter
+  \@removefromreset{figure}{chapter}
+  \@removefromreset{table}{chapter}
+  \@removefromreset{equation}{chapter}
+\makeatother
+
+%Zum korrekten Formatieren von Verzeichnissen
+\usepackage{tocloft}
+\renewcommand{\cftfigpresnum}{Abbildung~}
+\renewcommand{\cfttabpresnum}{Tabelle~}
+\renewcommand{\cftfigaftersnum}{:}
+\renewcommand{\cfttabaftersnum}{:}
+\setlength{\cftfignumwidth}{2.5cm}
+\setlength{\cfttabnumwidth}{2.5cm}
+\setlength{\cftfigindent}{0cm}
+\setlength{\cfttabindent}{0cm}
+
+
+\begin{document}
+
+%Festlegen des Zitier-Standards
+\bibliographystyle{HarvardFHTWMR_V1_2e}%Zitierstandard FH Technikum Wien, Studiengang Mechatronik/Robotik, Version 1.2e
+\citationstyle{dcu}%Correct citation-style (Harvardand, ";" between citations, "," between author and year)
+\citationmode{abbr}%use "et al." with first citation
+    \newcommand{\citepic}[1]{(Quelle: \protect\cite{#1})}%Zitat: Bild
+    \newcommand{\citefig}[2]{(Quelle: \protect\cite{#1}, S. #2)}%Zitat: Bild aus Dokument
+    \newcommand{\citefigm}[2]{(Quelle: modifiziert "ubernommen aus \protect\cite{#1}, S. #2)}%Zitat: modifiziertes Bild aus Dokument
+    \newcommand{\citep}{\citeasnoun}%In-Line Zitiat entweder mit \citep{} oder \citeasnoun{}
+    \newcommand{\acessedthrough}{Verf{\"u}gbar unter:}%Für URL-Angabe
+    \newcommand{\acessedthroughp}{Verf{\"u}gbar bei:}%Für URL-Angabe (Geschützte Datenbank, Zugriff durch FH)
+    \newcommand{\acessedat}{Zugang am}%Für URL-Datum-Angabe
+    \newcommand{\singlepage}{S.}%Für Seitenangabe (einzelne Seite)
+    \newcommand{\multiplepages}{S.}%Für Seitenangabe (mehrere Seiten)
+    \newcommand{\chapternr}{K.}%Für Kapitelangabe
+    \renewcommand{\harvardand}{\&}%Harvardand in Zitaten
+    \newcommand{\abstractonly}{ausschließlich Abstract}
+    \newcommand{\edition}{. Auflage}%Angabe der Auflage
+
+% Kopf- und Fusszeilen initiieren
+\pagestyle{fancy}
+
+% Deckblatt:
+\thispagestyle{empty}
+\begin{picture}(0,0)L
+\color{white}\sffamily
+\put(-110,-749){\includegraphics[width=1.002\paperwidth, height=\paperheight]{BM_2011.pdf}}
+\put(220,-670){\includegraphics[width=0.5\textwidth]{FHTW_Logo_4c.pdf}}
+\put(18,-100){\bfseries\huge BACHELORARBEIT}
+% Titel des Studienganges einf"ugen:
+\put(18,-130){\Large im Studiengang Mechatronik/Robotik (Bachelor)}
+% Titel der Arbeit einf"ugen:
+% Die Minipage wird gesetzt, damit auch mehrzeilige Titel m"oglich werden.
+\put(16,-200){
+\begin{minipage}{13cm}
+\bfseries\huge Geoinformationssystem 
+\end{minipage}
+}
+% Name der Autorin/des Autors eingeben:
+\put(18,-260){\large ausgeführt von Birgit Schreiber}
+% Adresse der Autorin/des Autors eingeben:
+\put(18,-280){\large A-3134 Theyern, Inzersdorfer Stra{\ss}e 5}
+\put(18,-310){\large Begutachter: MSc Grotschar}
+\put(18,-350){\large Wien, \today} % das Datum des letzten Kompilierens wird automatisch eingesetzt
+\color{black}
+\end{picture}
+
+\newpage
+
+
+\section*{Eidesstattliche Erkl"arung}\thispagestyle{empty}
+\glqq Ich erkl"are hiermit an Eides statt, dass ich die vorliegende Arbeit selbstst"andig angefertigt habe. Die aus fremden Quellen direkt oder indirekt "ubernommenen Gedanken sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in "ahnlicher Form einer anderen Pr"ufungsbeh"orde vorgelegt und auch noch nicht ver"offentlicht.\grqq\\[5\baselineskip]
+\rule{5cm}{0.2pt}\hfill\rule{5cm}{0.2pt}\\
+\phantom{Datum }Ort, Datum\hfill Unterschrift\hspace{15mm}
+\newpage
+
+
+\section*{Kurzfassung}\thispagestyle{empty}
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+\\ \vfill
+% Bitte 3-5 deutsche Schlagw"orter eingeben, die die Arbeit charakterisieren:
+\paragraph*{Schlagw"orter:} Schlagwort 1, Schlagwort 2, Schlagwort 3, Schlagwort 4, Schlagwort 5
+
+
+\newpage
+
+\section*{Abstract}\thispagestyle{empty}
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+\\ \vfill
+% Bitte 3-5 englische Keywords eingeben, die die Arbeit charakterisieren:
+\paragraph*{Keywords:} Keyword 1, Keyword 2, Keyword 3, Keyword 4, Keyword 5
+\newpage
+
+\tableofcontents\thispagestyle{empty}
+\newpage
+
+\setcounter{page}{1}
+
+\chapter{"Uberschrift des ersten Kapitels}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+
+\section{"Uberschrift des ersten Abschnitts}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+
+\subsection{"Uberschrift des ersten Unterabschnitts}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ...
+
+\subsubsection{Und noch eine Ebene tiefer}
+
+Text Text Text Text Text Text
+
+% Literaturverzeichnis
+\bibliography{Vorlage_BT_BMR_WS2013_Literatur}
+\newpage
+
+% Abbildungsverzeichnis und Tabellenverzeichnis
+\begingroup
+    \renewcommand*{\addvspace}[1]{}
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \listoffigures
+    \newpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \listoftables
+\endgroup
+
+
+% Abk"urzungsverzeichnis
+% Bei Verwendung der Dokumentklasse "scrartcl" ist der Befehlt \addchap{Abk"urzungsverzeichnis} durch
+% \addsec{Abk"urzungsverzeichnis} zu ersetzen
+\addchap{Abk"urzungsverzeichnis}
+\hspace{-17mm}\begin{tabular}{>{\raggedleft}p{0.2\linewidth} p{0.75\linewidth} p{0.1\linewidth}}
+www & World Wide Web \\
+URL & Uniform Resource Locator
+\end{tabular}
+
+% Anh"ange
+\begin{appendix}
+\chapter{"Uberschrift des ersten Anhangs}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+
+\end{appendix}
+
+\end{document}
