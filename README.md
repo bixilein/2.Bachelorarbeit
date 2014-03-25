@@ -1,3 +1,5 @@
+!!! USELESS FOR YOU !!!
+
 2.Bachelorarbeit
 ================
 
@@ -6,3 +8,5 @@
 Dies ist meine 2. Bachelorarbeit mit dem Thema Geoinformationssystem.
 
 LaTeX-Code für Arbeit
+
+!!! USELESS FOR YOU !!!
